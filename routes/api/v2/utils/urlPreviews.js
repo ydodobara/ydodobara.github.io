@@ -1,11 +1,9 @@
-import express from 'express';
 import fetch from 'node-fetch';
-import parser from 'node-html-parser';
-var router = express.Router();
 
-/* GET metatag listing. */
-router.get('/urls/preview', async function(req, res, next) {
-  let url = req.query.url;
+import parser from 'node-html-parser';
+
+async function getURLPreview(url){
+    let url = req.query.url;
   try {
     let response = await fetch(url);
     let pageText = await response.text();
@@ -19,6 +17,7 @@ router.get('/urls/preview', async function(req, res, next) {
     metaTags.forEach(tag => {
       if (tag.hasAttribute("property")) {
         let ogProperty = tag.getAttribute("property");
+        console.log(ogProperty);
         let ogContent = tag.getAttribute("content");
         let ogTag = ogProperty.split(":");
         if (ogTag[1] == "title") {
@@ -79,7 +78,7 @@ router.get('/urls/preview', async function(req, res, next) {
         ${showDescElement(ogDescription)}
       </div>
     </body>
-    </html>k
+    </html>
     `;
     res.send(html);
   }
@@ -87,6 +86,6 @@ router.get('/urls/preview', async function(req, res, next) {
     console.log(err);
     res.status(500).send("Error finding images");
   }
-});
+}
 
-export default router;
+export default getURLPreview;
