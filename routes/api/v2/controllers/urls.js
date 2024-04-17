@@ -6,8 +6,8 @@ import getURLPreview from '../utils/urlPreviews.js';
 
 router.get('/preview', async (req, res) => {
     try {
-        getURLPreview(req.query.url);
-        res.send("Success");
+        let urlPreview = await getURLPreview(req.query.url);
+        res.send(urlPreview);
     }
     catch(err) {
         console.log("Error getting preview of url", err);

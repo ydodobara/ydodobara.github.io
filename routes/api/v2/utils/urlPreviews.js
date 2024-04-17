@@ -3,7 +3,6 @@ import fetch from 'node-fetch';
 import parser from 'node-html-parser';
 
 async function getURLPreview(url){
-    let url = req.query.url;
   try {
     let response = await fetch(url);
     let pageText = await response.text();
@@ -80,11 +79,10 @@ async function getURLPreview(url){
     </body>
     </html>
     `;
-    res.send(html);
+    return html;
   }
   catch(err) {
-    console.log(err);
-    res.status(500).send("Error finding images");
+    return err;
   }
 }
 

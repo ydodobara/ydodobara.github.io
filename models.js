@@ -11,7 +11,8 @@ console.log("Successfully connected to MongoDB");
 const postSchema = new mongoose.Schema({
     url: String,
     description: String,
-    created_date: Date
+    created_date: Date,
+    username: String
 });
 
 models.Post = mongoose.model('Post', postSchema);
