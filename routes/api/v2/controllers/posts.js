@@ -46,6 +46,7 @@ router.get('/', async function(req, res, next) {
       console.log("Error:", error);
       res.status(500).json({"status": "error", "error": error});
     }
-  });
+    return postData;
+});
 
 export default router;
