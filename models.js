@@ -4,7 +4,7 @@ let models = {};
 
 console.log("Connecting to mongodb");
 
-await mongoose.connect("mongodb+srv://ydodo:mDB-info441@ydcluster.qe5g6ov.mongodb.net/");
+await mongoose.connect("mongodb+srv://ydodo:mDB-info441@ydcluster.qe5g6ov.mongodb.net/websharer");
 
 console.log("Successfully connected to MongoDB");
 
